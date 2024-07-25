@@ -1,5 +1,5 @@
 use bip39::Mnemonic;
-use sp_core::{ecdsa::{Public, self, Signature}, Pair};
+use sp_core::{ed25519::{Public, self, Signature}, Pair};
 
 ///Generating Centichain network key pairs randomly
 /// 
@@ -10,14 +10,14 @@ pub fn generate() -> (String, Public) {
     let seed = seed15::random_seed();
     let mnemonic = Mnemonic::from_entropy(&seed).unwrap();
     let seed_phrase = mnemonic.to_string();
-    let keypair = ecdsa::Pair::from_phrase(&seed_phrase, None).unwrap();
+    let keypair = ed25519::Pair::from_phrase(&seed_phrase, None).unwrap();
     (seed_phrase, keypair.0.public())
 }
 
 ///Returning the public key by getting the seed phrase
 /// ````
 pub fn check_phrase_key<'a>(seed_phrase: String) -> Result<Public, &'a str> {
-    let keypair = ecdsa::Pair::from_phrase(&seed_phrase, None);
+    let keypair = ed25519::Pair::from_phrase(&seed_phrase, None);
     match keypair {
         Ok(pair) => {
             Ok(pair.0.public())
@@ -31,7 +31,7 @@ pub fn check_phrase_key<'a>(seed_phrase: String) -> Result<Public, &'a str> {
 ///Taking input and returning a signature accepted by the Centichain network
 /// ````
 pub fn sign_message(seed_phrase: String, message: &String) -> Result<Signature, &str> {
-    let keypair = ecdsa::Pair::from_phrase(&seed_phrase, None);
+    let keypair = ed25519::Pair::from_phrase(&seed_phrase, None);
     match keypair {
         Ok(pair) => {
             Ok(pair.0.sign(message.as_bytes()))
