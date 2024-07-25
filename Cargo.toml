@@ -1,6 +1,6 @@
 [package]
 name = "centichain_keypair"
-version = "3.0.0"
+version = "3.0.1"
 edition = "2021"
 description = "Creation of key pair and signature of Centichain network"
 license = "MIT"
