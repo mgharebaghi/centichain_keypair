@@ -9,6 +9,6 @@ repository = "https://github.com/mgharebaghi82/centichain_keypair.git"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-sp-core = "32.0.0"
+sp-core = "34.0.0"
 seed15 = "0.1.5"
 bip39 = "2.0.0"
