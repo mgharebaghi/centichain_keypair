@@ -7,11 +7,10 @@ use sp_core::{ed25519::{Public, self, Signature}, Pair};
 /// 
 /// ````
 pub fn generate() -> (String, Public) {
-    let seed = seed15::random_seed();
-    let mnemonic = Mnemonic::from_entropy(&seed).unwrap();
+    let keypair = ed25519::Pair::generate();
+    let mnemonic = Mnemonic::from_entropy(&keypair.1).unwrap();
     let seed_phrase = mnemonic.to_string();
-    let keypair = ed25519::Pair::from_phrase(&seed_phrase, None).unwrap();
-    (seed_phrase, keypair.0.public())
+    (seed_phrase , keypair.0.public())
 }
 
 ///Returning the public key by getting the seed phrase

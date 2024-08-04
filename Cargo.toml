@@ -10,5 +10,4 @@ repository = "https://github.com/mgharebaghi82/centichain_keypair.git"
 
 [dependencies]
 sp-core = "34.0.0"
-seed15 = "0.1.5"
 bip39 = "2.0.0"
