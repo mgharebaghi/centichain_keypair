@@ -15,8 +15,8 @@ pub fn generate() -> (String, Public) {
 
 ///Returning the public key by getting the seed phrase
 /// ````
-pub fn check_phrase_key<'a>(seed_phrase: String) -> Result<Public, &'a str> {
-    let keypair = ed25519::Pair::from_phrase(&seed_phrase, None);
+pub fn check_phrase<'a>(seed_phrase: &String) -> Result<Public, &'a str> {
+    let keypair = ed25519::Pair::from_phrase(seed_phrase, None);
     match keypair {
         Ok(pair) => {
             Ok(pair.0.public())
@@ -29,7 +29,7 @@ pub fn check_phrase_key<'a>(seed_phrase: String) -> Result<Public, &'a str> {
 
 ///Taking input and returning a signature accepted by the Centichain network
 /// ````
-pub fn sign_message(seed_phrase: String, message: &String) -> Result<Signature, &str> {
+pub fn signing<'a>(seed_phrase: &String, message: &String) -> Result<Signature, &'a str> {
     let keypair = ed25519::Pair::from_phrase(&seed_phrase, None);
     match keypair {
         Ok(pair) => {
