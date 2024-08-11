@@ -4,7 +4,7 @@ use sp_core::{
     Pair,
 };
 
-struct CentichainKey;
+ pub struct CentichainKey;
 
 impl CentichainKey {
     ///Generating Centichain network key pairs randomly
