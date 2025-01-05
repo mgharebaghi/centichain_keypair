@@ -13,11 +13,12 @@ impl CentichainKey {
     ///
     /// ````
     pub fn generate() -> (String, Public) {
-        let keypair = ed25519::Pair::generate();
-        let seed = keypair.0.seed();
-        let mnemonic = Mnemonic::from_entropy(&seed).unwrap();
-        let seed_phrase = mnemonic.to_string();
-        (seed_phrase, keypair.0.public())
+        let entropy = rand::random::<[u8; 24]>();
+        let mnemonic = Mnemonic::from_entropy_in(bip39::Language::English, &entropy)
+            .expect("Valid entropy should generate valid mnemonic");
+        let keypair = ed25519::Pair::from_phrase(&mnemonic.to_string(), None)
+            .expect("Valid mnemonic should generate valid keypair");
+        (mnemonic.to_string(), keypair.0.public())
     }
 
     ///Returning the public key by getting the seed phrase
