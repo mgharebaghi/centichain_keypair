@@ -14,7 +14,8 @@ impl CentichainKey {
     /// ````
     pub fn generate() -> (String, Public) {
         let keypair = ed25519::Pair::generate();
-        let mnemonic = Mnemonic::from_entropy(&keypair.1).unwrap();
+        let seed = keypair.0.seed();
+        let mnemonic = Mnemonic::from_entropy(&seed).unwrap();
         let seed_phrase = mnemonic.to_string();
         (seed_phrase, keypair.0.public())
     }
