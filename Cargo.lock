@@ -386,7 +386,7 @@ checksum = "2aba8f4e9906c7ce3c73463f62a7f0c65183ada1a2d47e397cc8810827f9694f"
 
 [[package]]
 name = "centichain_keypair"
-version = "4.0.1"
+version = "4.0.2"
 dependencies = [
  "bip39",
  "rand",
