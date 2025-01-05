@@ -13,7 +13,7 @@ impl CentichainKey {
     ///
     /// ````
     pub fn generate() -> (String, Public) {
-        let entropy = rand::random::<[u8; 24]>();
+        let entropy = rand::random::<[u8; 16]>();
         let mnemonic = Mnemonic::from_entropy_in(bip39::Language::English, &entropy)
             .expect("Valid entropy should generate valid mnemonic");
         let keypair = ed25519::Pair::from_phrase(&mnemonic.to_string(), None)
