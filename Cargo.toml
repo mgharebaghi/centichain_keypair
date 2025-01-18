@@ -1,6 +1,6 @@
 [package]
 name = "centichain_keypair"
-version = "4.0.2"
+version = "4.0.3"
 edition = "2021"
 description = "Creation of key pair and signature of Centichain network"
 license = "MIT"
@@ -9,6 +9,6 @@ repository = "https://github.com/mgharebaghi82/centichain_keypair.git"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-sp-core = "34.0.0"
+sp-core = "35.0.0"
 bip39 = "2.1.0"
 rand = "0.8.5"
